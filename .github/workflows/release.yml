@@ -42,6 +42,8 @@ jobs:
       - push-tag     
     if: ${{ needs.get-version.outputs.package-version != needs.get-version.outputs.latest-tag }}
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - name: set up
         uses: actions/setup-go@v3.2.1
