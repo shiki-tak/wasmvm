@@ -90,11 +90,8 @@ jobs:
     if: ${{ needs.get-version.outputs.package-version != needs.get-version.outputs.latest-tag }}
     runs-on: ubuntu-latest
     steps:
-      - name: check dir
-        run: |
-          ls
       - name: Create Release
-        uses: softprops/action-gh-release@v1
+        uses: softprops/action-gh-release@v0.1.13
         with:
           tag_name: ${{ needs.get-version.outputs.package-version }}
           body: ${{ github.event.pull_request.body }}
