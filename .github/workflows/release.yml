@@ -66,7 +66,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: artifacts
-          path: ./artifacts
+          path: ${{github.workspace}}/artifacts
 
   push-tag: # if the version does not exist as git tag, push it
     name: Push Tag
@@ -96,6 +96,6 @@ jobs:
           tag_name: ${{ needs.get-version.outputs.package-version }}
           body: ${{ github.event.pull_request.body }}
           files: |
-            ./artifacts/*
+            ${{github.workspace}}/artifacts/**
           draft: false
           prerelease: false
