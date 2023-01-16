@@ -97,6 +97,6 @@ jobs:
           tag_name: ${{ needs.get-version.outputs.package-version }}
           body: ${{ github.event.pull_request.body }}
           files: |
-            ${{github.workspace}}/artifacts/*.txt
+            ${{github.workspace}}/artifacts/test.txt
           draft: false
           prerelease: false
