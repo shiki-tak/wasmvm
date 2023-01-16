@@ -66,7 +66,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: artifacts
-          path: ./
+          path: ./artifacts
 
   push-tag: # if the version does not exist as git tag, push it
     name: Push Tag
@@ -90,6 +90,9 @@ jobs:
     if: ${{ needs.get-version.outputs.package-version != needs.get-version.outputs.latest-tag }}
     runs-on: ubuntu-latest
     steps:
+      - name: check dir
+        run: |
+          ls
       - name: Create Release
         uses: softprops/action-gh-release@v1
         with:
