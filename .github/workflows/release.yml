@@ -78,6 +78,7 @@ jobs:
         working-directory: ./artifacts
         run: | 
           echo $(ls)
+          echo $(pwd)
           sha256sum * > checksums.txt && cat checksums.txt
       - name: Create Release
         uses: softprops/action-gh-release@v0.1.13
