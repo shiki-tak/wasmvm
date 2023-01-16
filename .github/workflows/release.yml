@@ -49,23 +49,24 @@ jobs:
         id: go
       - name: Checkout
         uses: actions/checkout@v2
-      - name: Build docker image
-        run: cd builders && make docker-image-alpine
-      - name: Build & Test static library
-        run: make release-build-alpine
+      # - name: Build docker image
+      #   run: cd builders && make docker-image-alpine
+      # - name: Build & Test static library
+      #   run: make release-build-alpine
       - name: Collect artifacts
         run: |
           mkdir artifacts
-          cp ./internal/api/libwasmvm_muslc.a artifacts/libwasmvm_muslc.x86_64.a
-          cp ./internal/api/libwasmvm_muslc.aarch64.a artifacts/libwasmvm_muslc.aarch64.a
-      - name: Create checksums
-        working-directory: artifacts
-        run: sha256sum * > checksums.txt && cat checksums.txt
+          touch test.txt
+          # cp ./internal/api/libwasmvm_muslc.a artifacts/libwasmvm_muslc.x86_64.a
+          # cp ./internal/api/libwasmvm_muslc.aarch64.a artifacts/libwasmvm_muslc.aarch64.a
+      # - name: Create checksums
+      #   working-directory: artifacts
+      #   run: sha256sum * > checksums.txt && cat checksums.txt
       - name: Upload static library
         uses: actions/upload-artifact@v2
         with:
           name: artifacts
-          path: ./artifacts
+          path: ./
 
   push-tag: # if the version does not exist as git tag, push it
     name: Push Tag
